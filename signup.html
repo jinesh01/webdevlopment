@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign-Up/Login Form</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript">
+var ck_name = /^[A-Za-z0-9]{3,20}$/;
+var ck_email = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; 
+var ck_lastname = /^[A-Za-z0-9_]{1,20}$/;
+var ck_password =  /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+
+
+function validate(form){
+var name = form.name.value;
+ var email = form.email.value;
+ var lastname = form.lastname.value;
+ var password = form.password.value;
+  
+  
+ var errors = [];
+
+if(name=="" || email==""||lastname==""||password=="") 
+	{
+		errors[errors.length] = "Enter Name .";
+	errors[errors.length] = "Enter email .";
+	errors[errors.length] = "Enter lastname .";
+	errors[errors.length] = "Enter password .";
+
+	}
+ else if (!ck_name.test(name)) {
+  errors[errors.length] = "Enter Your valid Name .";
+ }
+  
+ else if (!ck_email.test(email)) {
+  errors[errors.length] = "You must enter a valid email address.";
+ }
+ else if (!ck_lastname.test(lastname)) {
+  errors[errors.length] = "You valid UserName no special char .";
+ }
+
+ else if (!ck_password.test(password)) {
+  errors[errors.length] = "You must enter a valid Password min 6 char.";
+ }
+ 
+ 
+ 
+ if (errors.length > 0) {
+  reportErrors(errors);
+  return false;
+ }
+ 
+ return true;
+}
+
+function reportErrors(errors){
+ var msg = "Please Enter Valide Data...";
+ for (var i = 0; i<errors.length; i++) {
+  var numError = i + 1;
+  msg += "\n" + numError + ". " + errors[i];
+ }
+ alert(msg);
+}
+</script> 
+</head>
+
+<body>
+  <div class="form">
+      
+      <ul class="tab-group">
+        <li class="tab active"><a href="login.html">Sign Up</a></li>
+      </ul>
+      
+      <div class="tab-content">
+        <div id="signup">   
+          <h1>Sign Up for Free</h1>
+          
+          <form method="POST" name="form" action="login.html" onsubmit="return validate(this);">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>
+                First Name
+              </label>
+              <input type="text" name="name" />
+            </div>
+        
+            <div class="field-wrap">
+              <label>
+                Last Name
+              </label>
+              <input type="text" name="lastname">
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email Address
+            </label>
+            <input type="text" name="email">
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Set A Password
+            </label>
+            <input type="password" name="password">
+          </div>
+          
+          <button type="submit" href="login.html" class="button button-block"/>Get Started</button>
+          
+          </form>
+          <br><br>
+          <a id="abcd" href="login.html">Already have an account? Login</a>
+        </div>
+<script src='js/index2.js'></script>
+<script  src="js/index.js"></script>
+
+</body>
+</html>
