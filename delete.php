@@ -1,3 +1,4 @@
+<!-- Admin -->
 <?php
 $conn = mysqli_connect("localhost","root","","car_rental");
 $query ="select *  from product";
